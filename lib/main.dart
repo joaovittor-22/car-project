@@ -100,10 +100,12 @@ class ListBrands extends StatelessWidget {
             visible: resultVisible.value,
             child: Column(children: [
                  Text("O consumo do seu carro é:"),
-          Text("$resultValue km/L",style: TextStyle(fontSize: 28),),
+          Text("${resultValue.toStringAsFixed(2)} km/L",style: TextStyle(fontSize: 28),),
           ],)),
           SizedBox(height: 40,),
-TextField(decoration: const InputDecoration(
+                      TextField(
+                        keyboardType: TextInputType.number,
+                        decoration: const InputDecoration(
                           border: OutlineInputBorder(),
                           labelText: 'Quantos km seu carro anda com tanque cheio? ',
                         ),
@@ -111,7 +113,9 @@ TextField(decoration: const InputDecoration(
                               totalKm = km;
                         }),
                         SizedBox(height: 40,),
-TextField(decoration: const InputDecoration(
+                       TextField(
+                          keyboardType: TextInputType.number,
+                          decoration: const InputDecoration(
                           border: OutlineInputBorder(),
                           labelText: 'Quantos litros seu carro precisa para encher o tanque?',
                         ),
