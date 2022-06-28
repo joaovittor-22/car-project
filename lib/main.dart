@@ -12,9 +12,9 @@ var car = "carro";
 var tabIndex = 0.obs;
 var resultVisible = false.obs;
 var resultReact = "".obs;
-double resultValue = 0;
-double totalKm = 0;
-double tanque = 0;  
+dynamic resultValue = 0;
+dynamic totalKm = 0;
+dynamic tanque = 0;  
 
 
 
@@ -101,10 +101,10 @@ class ListBrands extends StatelessWidget {
           Visibility(
             visible: resultVisible.value,
             child: Column(children: [
-                 Text("O consumo do seu carro é:"),
-          Text("${resultReact.value} km/L",style: TextStyle(fontSize: 28),),
+                 const Text("O consumo do seu carro é:"),
+          Text("${resultReact.value} km/L",style: const TextStyle(fontSize: 28),),
           ],)),
-          SizedBox(height: 40,),
+         const  SizedBox(height: 40,),
                       TextField(
                         keyboardType: TextInputType.number,
                         decoration: const InputDecoration(
@@ -114,11 +114,11 @@ class ListBrands extends StatelessWidget {
                         onChanged: (dynamic km) {
                           resultVisible.value = false;
                            km = double.tryParse(km);
-                           if (km.runtimeType == double){
+                           if (km.runtimeType == double || km.runtimeType == int){
                                     totalKm = km;
                                }
                         }),
-                        SizedBox(height: 40,),
+                       const  SizedBox(height: 40,),
                        TextField(
                           keyboardType: TextInputType.number,
                           decoration: const InputDecoration(
@@ -128,23 +128,22 @@ class ListBrands extends StatelessWidget {
                         onChanged: (dynamic tanqueVar) {
                                resultVisible.value = false;
                                tanqueVar = double.tryParse(tanqueVar);
-                               if (tanqueVar.runtimeType == double){
+                               if (tanqueVar.runtimeType == double || tanqueVar.runtimeType == int){
                                     tanque = tanqueVar;
                                }
                         }),
-                        SizedBox(height: 10,),
+                       const  SizedBox(height: 10,),
                       SizedBox(
                         width: 200,
                         child: ElevatedButton(onPressed: (){
-                        /*  if (totalKm.runtimeType == String || ){
-                           totalKm = double.tryParse(totalKm);
-                           tanque = ;
-                          }*/
 
                                 resultValue = totalKm/tanque;
-                                resultReact.value = resultValue.toStringAsFixed(2);
+                                if (resultValue.runtimeType == double ){
+                                  resultValue = resultValue.toStringAsFixed(2);
+                                }
+                                resultReact.value = resultValue;
                                 resultVisible.value = true;
-                        }, child: Text("Calcular")),)
+                        }, child:const  Text("Calcular")),)
                         
 
         ],)
