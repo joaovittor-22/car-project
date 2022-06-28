@@ -140,6 +140,8 @@ class ListBrands extends StatelessWidget {
                                 resultValue = totalKm/tanque;
                                 if (resultValue.runtimeType == double ){
                                   resultValue = resultValue.toStringAsFixed(2);
+                                }else {
+                                  resultValue = resultValue.toString();
                                 }
                                 resultReact.value = resultValue;
                                 resultVisible.value = true;
