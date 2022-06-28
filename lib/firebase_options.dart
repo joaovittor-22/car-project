@@ -40,19 +40,20 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBZll-xbL2KUl5VrOnvYYd6m0JF1SyHTbE',
-    appId: '1:294276796452:web:5cad135113c08eefbb08b1',
-    messagingSenderId: '294276796452',
-    projectId: 'car-projetc',
-    authDomain: 'car-projetc.firebaseapp.com',
-    storageBucket: 'car-projetc.appspot.com',
+    apiKey: 'AIzaSyAg0-N3X28uVOXS8nrWEsgndTZLReQHTww',
+    appId: '1:660753873168:web:4842ae6c56fada1f5c0d95',
+    messagingSenderId: '660753873168',
+    projectId: 'car-project-37757',
+    authDomain: 'car-project-37757.firebaseapp.com',
+    storageBucket: 'car-project-37757.appspot.com',
+    measurementId: 'G-R03QKHBC0B',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBWB-QhoqUaKgpvbjcE9QH9UdHqZ2VNd0A',
-    appId: '1:294276796452:android:2b5e0bd49912b7c5bb08b1',
-    messagingSenderId: '294276796452',
-    projectId: 'car-projetc',
-    storageBucket: 'car-projetc.appspot.com',
+    apiKey: 'AIzaSyBSp5JX1_5DvPkgQ7V1p-3xhWUAbZjc2Jw',
+    appId: '1:660753873168:android:4225f9f69962df085c0d95',
+    messagingSenderId: '660753873168',
+    projectId: 'car-project-37757',
+    storageBucket: 'car-project-37757.appspot.com',
   );
 }

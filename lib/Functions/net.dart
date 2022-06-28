@@ -13,15 +13,15 @@ class Net{
 Map<String, String> headers = {};
 if (headerCntrl == 1){
    headers = {
-    'X-RapidAPI-Key': '7eb466d5a5msh4838e49cc9ee945p183f39jsn69f7832af908',
+    'X-RapidAPI-Key': 'adebe293aemsh387274028359ec5p13aac4jsn6d2c904eedc8',
     'X-RapidAPI-Host': 'car-data.p.rapidapi.com'
   };
 } 
 else if (headerCntrl == 2){
      headers = {
-    'X-RapidAPI-Key': '7eb466d5a5msh4838e49cc9ee945p183f39jsn69f7832af908',
+    'X-RapidAPI-Key': 'adebe293aemsh387274028359ec5p13aac4jsn6d2c904eedc8',
     'X-RapidAPI-Host': 'cars-specs-automotive-catalog.p.rapidapi.com'
-  };
+  }; // chaves da api 
 }
 
 

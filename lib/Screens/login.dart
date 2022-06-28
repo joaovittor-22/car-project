@@ -60,12 +60,12 @@ class Login extends StatelessWidget {
                               style: ElevatedButton.styleFrom(minimumSize: 
                              const Size(double.infinity, 55)),
                               onPressed: (){
-                              login(_email, _pass);
+                              var r = login(_email, _pass);
+                              r == true || r == "true" ? Get.to(ListBrands()) : null;
                         }, child: const Text("Login"))
                   ],
                 )
-                )
-                ,
+                ),
                 Padding(padding: const EdgeInsets.all(10),
                 child:  Column(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -112,10 +112,9 @@ class Login extends StatelessWidget {
 login(email,String pass)async  {
     var result = false;
    if (pass.isNotEmpty){
-       try {
+      if (auth.currentUser?.uid == null){
+try {
    await auth.signInWithEmailAndPassword(email: email, password: pass);
- auth.currentUser?.uid != null ?  result = true :null;
-
     auth.authStateChanges().listen((user) {
       if (user != null ) {
        FirebaseAuth.instance.setPersistence(Persistence.SESSION);
@@ -132,6 +131,11 @@ login(email,String pass)async  {
       notify("Algo incorreto");
     } 
   }
+      }
+      else {
+         Get.to(ListBrands());
+      }
+       
     return result;
    }
    
@@ -146,7 +150,9 @@ if (pass == pass2 && pass.length >= 8){
     password: pass,
   )).user;
 
-  if (firebaseUser != null) {  
+
+  if (firebaseUser != null) {   
+     notify("Usuário cadastrado com sucesso");
        Get.to(ListBrands);
     return true;
   }
