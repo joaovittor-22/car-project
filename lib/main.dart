@@ -11,9 +11,10 @@ var brand = "";
 var car = "carro";
 var tabIndex = 0.obs;
 var resultVisible = false.obs;
-dynamic resultValue = 0.obs;
-dynamic totalKm = 0;
-dynamic tanque = 0;  
+var resultReact = "".obs;
+double resultValue = 0;
+double totalKm = 0;
+double tanque = 0;  
 
 
 
@@ -64,6 +65,7 @@ class ListBrands extends StatelessWidget {
                     child: const Text('Selecione uma marca',
                         style: TextStyle(fontSize: 18)),
                   ),
+
                   Expanded(
                       child: ListView.builder(
                           itemCount: list.length,
@@ -100,7 +102,7 @@ class ListBrands extends StatelessWidget {
             visible: resultVisible.value,
             child: Column(children: [
                  Text("O consumo do seu carro é:"),
-          Text("${resultValue.toStringAsFixed(2)} km/L",style: TextStyle(fontSize: 28),),
+          Text("${resultReact.value} km/L",style: TextStyle(fontSize: 28),),
           ],)),
           SizedBox(height: 40,),
                       TextField(
@@ -109,8 +111,12 @@ class ListBrands extends StatelessWidget {
                           border: OutlineInputBorder(),
                           labelText: 'Quantos km seu carro anda com tanque cheio? ',
                         ),
-                        onChanged: (km) {
-                              totalKm = km;
+                        onChanged: (dynamic km) {
+                          resultVisible.value = false;
+                           km = double.tryParse(km);
+                           if (km.runtimeType == double){
+                                    totalKm = km;
+                               }
                         }),
                         SizedBox(height: 40,),
                        TextField(
@@ -119,16 +125,27 @@ class ListBrands extends StatelessWidget {
                           border: OutlineInputBorder(),
                           labelText: 'Quantos litros seu carro precisa para encher o tanque?',
                         ),
-                        onChanged: (tanqueVar) {
-                                tanque = tanqueVar;
+                        onChanged: (dynamic tanqueVar) {
+                               resultVisible.value = false;
+                               tanqueVar = double.tryParse(tanqueVar);
+                               if (tanqueVar.runtimeType == double){
+                                    tanque = tanqueVar;
+                               }
                         }),
-                        ElevatedButton(onPressed: (){
+                        SizedBox(height: 10,),
+                      SizedBox(
+                        width: 200,
+                        child: ElevatedButton(onPressed: (){
+                        /*  if (totalKm.runtimeType == String || ){
                            totalKm = double.tryParse(totalKm);
-                           tanque = double.tryParse(tanque);
-                                resultValue =   totalKm/tanque;
-                                resultVisible.value = true;
+                           tanque = ;
+                          }*/
 
-                        }, child: Text("Calcular"))
+                                resultValue = totalKm/tanque;
+                                resultReact.value = resultValue.toStringAsFixed(2);
+                                resultVisible.value = true;
+                        }, child: Text("Calcular")),)
+                        
 
         ],)
         ]);
