@@ -14,6 +14,7 @@ class Login extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    auth.signOut();
     return DefaultTabController(
         length: 2,
         child: Scaffold(
@@ -60,8 +61,12 @@ class Login extends StatelessWidget {
                               style: ElevatedButton.styleFrom(minimumSize: 
                              const Size(double.infinity, 55)),
                               onPressed: (){
-                              var r = login(_email, _pass);
-                              r == true || r == "true" ? Get.to(ListBrands()) : null;
+                              if (auth.currentUser != null){
+                                Get.to(ListBrands());
+                              } else {
+                                login(_email, _pass);
+                              }
+                    
                         }, child: const Text("Login"))
                   ],
                 )
@@ -125,10 +130,10 @@ try {
 
   } on FirebaseAuthException catch (e) {
     if (e.code == 'user-not-found') {
-      notify("Usuário não cadastrado");
+      notify("Ops","Usuário não cadastrado");
     } 
     else if (e.code == 'wrong-password') {
-      notify("Algo incorreto");
+      notify("Ops","Algo incorreto");
     } 
   }
       }
@@ -152,29 +157,29 @@ if (pass == pass2 && pass.length >= 8){
 
 
   if (firebaseUser != null) {   
-     notify("Usuário cadastrado com sucesso");
-       Get.to(ListBrands);
+     notify("Uhul", "Usuário cadastrado com sucesso");
+       Get.to(ListBrands());
     return true;
   }
 
   else {
-    notify("Este email já está cadastrado ou tente novamente mais tarde");
+    notify("Ops","Este email já está cadastrado ou tente novamente mais tarde");
   }
 
 }
 else if (pass.length < 8 ){
-    pass.length < 8 &&  pass.length > 1 ? notify( "Digite uma senha maior"): null;
+    pass.length < 8 &&  pass.length > 1 ? notify("Ops", "Digite uma senha maior"): null;
 
 }
  else {
-   notify( "As senhas devem ser iguais");
+   notify("Ops", "As senhas devem ser iguais");
  }
 }
 
 
-notify(message){
+notify(expression,message){
     Get.snackbar(
-              "Ops",
+              expression,
                message,
                icon: const Icon(Icons.person, color: Colors.white),
                snackPosition: SnackPosition.BOTTOM,
