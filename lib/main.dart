@@ -140,6 +140,7 @@ TextField(decoration: const InputDecoration(
         currentIndex: tabIndex.value,
         onTap: (index){
             tabIndex.value = index;
+            resultVisible.value = false;
         },
         items: const [
           BottomNavigationBarItem(
