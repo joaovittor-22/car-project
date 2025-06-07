@@ -20,8 +20,8 @@ if (headerCntrl == 1){
 else if (headerCntrl == 2){
      headers = {
     'X-RapidAPI-Key': '',
-    'X-RapidAPI-Host': ''
-  }; // chaves da api 
+    'X-RapidAPI-Host': ''// chaves da api 
+  };
 }
 
 
