@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 makeList(List list){
 
@@ -48,6 +49,8 @@ list.forEach((item){
         
       });
 });
+
+listWidget.length == 0 ? Get.back() : null;
 
 return listWidget;
 }
