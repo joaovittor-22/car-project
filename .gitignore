@@ -1,3 +1,5 @@
 .firebase
 
 .firebaserc
+
+*/firebase_options.dart
